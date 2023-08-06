@@ -14,7 +14,7 @@ let entireDirectory
 const watcher = chokidar.watch(directoryToWatch)
 
 app.set('port', (process.env.PORT || 3000))
-app.use(express.static('client/dist'))
+app.use(express.static(__dirname + "/client/dist"))
 
 app.get('/', function(request, response) {
   response.sendFile(__dirname + '/client/index.html')
@@ -27,6 +27,7 @@ httpServer.listen(app.get('port'), function() {
 watcher.on('all', (event, path) => {
   if (watcherInitiated === true) {
     entireDirectory = dirTree(directoryToWatch)
+    io.emit('directoryUpdate', entireDirectory)
     console.log(entireDirectory)
   }
 })

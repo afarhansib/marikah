@@ -6,7 +6,8 @@
   "bin": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "css": "npx tailwindcss -i ./src/main.css -o ./dist/main.css --watch"
+    "css": "npx tailwindcss -i ./client/src/main.css -o ./client/dist/main.css --watch",
+    "build": "pkg ."
   },
   "keywords": [],
   "author": "",
@@ -24,7 +25,7 @@
   },
   "pkg": {
     "assets": "client/**/*",
-    "targets": [ "node14-win-x64" ],
+    "targets": [ "node14-win-x64", "node14-linux-x64" ],
     "outputPath": "bin"
   }
 }

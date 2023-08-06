@@ -5,7 +5,6 @@ const app = createApp({
   data() {
     return {
       criteriaModalOpen: false,
-      watchedDirectory: 'Watch',
       folderForReference: 0,
       directoryData: []
     }
