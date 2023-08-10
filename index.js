@@ -9,11 +9,12 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, { /* options */ });
 console.log(process.argv.slice(2)[0])
 let directoryToWatch = './' + process.argv.slice(2)[0]
+let port = process.argv.slice(2)[1] || 3000
 let watcherInitiated = false
 let entireDirectory
 const watcher = chokidar.watch(directoryToWatch)
 
-app.set('port', (process.env.PORT || 3000))
+app.set('port', port)
 app.use(express.static(__dirname + "/client/dist"))
 
 app.get('/', function(request, response) {
